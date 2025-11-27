@@ -323,27 +323,27 @@ function quickSort(start, end) {
     return
   }
   let pivot = barsHeight[start]
-  let i = start
-  let j = end + 1
+  let i = start;
+  let j = end + 1;
   while (i < j) {
     do {
-      anim(bars[i], barsHeight[i], p1)
-      anim(bars[i], barsHeight[i], p)
-      i++
+      anim(bars[i], barsHeight[i], p1);
+      anim(bars[i], barsHeight[i], p);
+      i++;
     } while (barsHeight[i] <= pivot)
     do {
       j--
-      anim(bars[j], barsHeight[j], p2)
-      anim(bars[j], barsHeight[j], p)
+      anim(bars[j], barsHeight[j], p2);
+      anim(bars[j], barsHeight[j], p);
     } while (barsHeight[j] > pivot)
     if (i < j) {
       ;[barsHeight[i], barsHeight[j]] = [barsHeight[j], barsHeight[i]]
     }
   }
   ;[barsHeight[start], barsHeight[j]] = [barsHeight[j], barsHeight[start]]
-  anim(bars[j], barsHeight[j], sorted)
-  quickSort(start, j - 1)
-  quickSort(j + 1, end)
+  anim(bars[j], barsHeight[j], sorted);
+  quickSort(start, j - 1);
+  quickSort(j + 1, end);
 }
 
-generateNewArray()
+generateNewArray();

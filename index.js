@@ -106,9 +106,6 @@ sortBtn.addEventListener('click', () => {
     case 'Merge Sort':
       mergeSort(0, n - 1)
       break
-    case 'Heap Sort':
-      heapSort()
-      break
     case 'Quick Sort':
       quickSort(0, n - 1)
       break
@@ -251,63 +248,6 @@ function merge(start, end) {
   for (let i = 0; i < C.length; i++) {
     barsHeight[start + i] = C[i]
     anim(bars[start + i], barsHeight[start + i], sorted)
-  }
-}
-
-// Heap Sort
-function heapSort() {
-  disable()
-
-  for (let i = 0; i < n; i++) {
-    heapifyUp(i)
-  }
-
-  for (let i = 0; i < n - 1; i++) {
-    let last = n - 1 - i
-    ;[barsHeight[0], barsHeight[last]] = [barsHeight[last], barsHeight[0]]
-
-    anim(bars[last], barsHeight[last], sorted)
-
-    heapifyDown(last)
-  }
-}
-
-function heapifyUp(i) {
-  let parent = Math.floor((i - 1) / 2)
-
-  while (i > 0 && barsHeight[parent] < barsHeight[i]) {
-    anim(bars[i], barsHeight[i], p1)
-    anim(bars[parent], barsHeight[parent], p2)
-    ;[barsHeight[i], barsHeight[parent]] = [barsHeight[parent], barsHeight[i]]
-
-    anim(bars[i], barsHeight[i], heap)
-    anim(bars[parent], barsHeight[parent], heap)
-
-    i = parent
-    parent = Math.floor((i - 1) / 2)
-  }
-  anim(bars[i], barsHeight[i], heap)
-}
-
-function heapifyDown(size) {
-  let i = 0
-  while (2 * i + 1 < size) {
-    let Child = 2 * i + 1
-    if (2 * i + 2 < size && barsHeight[2 * i + 2] >= barsHeight[Child]) {
-      Child = 2 * i + 2
-    }
-    anim(bars[i], barsHeight[i], p1)
-    anim(bars[Child], barsHeight[Child], p2)
-
-    anim(bars[i], barsHeight[i], heap)
-    anim(bars[Child], barsHeight[Child], heap)
-
-    if (barsHeight[i] >= barsHeight[Child]) {
-      return
-    }
-
-    ;[barsHeight[i], barsHeight[Child]] = [barsHeight[Child], barsHeight[i]]
-    i = Child
   }
 }
 
